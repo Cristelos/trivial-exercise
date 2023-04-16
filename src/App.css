@@ -6,6 +6,25 @@
   list-style: none;
 }
 
+body{
+  background-color: #e499ff;
+  background-image: radial-gradient(at 47% 69%, hsla(17,62%,65%,1) 0px, transparent 50%),
+radial-gradient(at 9% 32%, hsla(222,75%,60%,1) 0px, transparent 50%);
+background-size: cover;
+
+}
+
+.trivial{
+  border-radius: 20px;
+  background: #fff;
+  transition: background 300ms, color 300ms;
+  width: 80vw;
+  height: 89vh;
+  margin: 30px auto;
+  padding: 16px;
+  overflow: scroll;
+}
+
 .seleccion{
   display: flex;
   gap: 5px;
@@ -18,21 +37,63 @@
 .contenedor-preguntas{
   margin: 20px 30px;
 }
-
+.preguntas-respuestas{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 .respuestas{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
-  margin: 11px 0px;
+  margin: 13px 0px;
+  justify-content: space-evenly;
+  gap: 12px;
 }
 
-.correcta{
-  background-color: green;
-  margin: 10px;
+button {
+ padding: 15px 25px;
+ border: unset;
+ border-radius: 15px;
+ color: #212121;
+ z-index: 1;
+ background:#f4f4f4;
+ position: relative;
+ font-weight: 1000;
+ font-size: 17px;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms;
+ overflow: hidden;
 }
 
-.incorrecta{
-  background-color: red;
-  margin: 10px;
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #2196F3;
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+}
 
+button:hover {
+  color: #ffffff;
+}
+
+button:hover::before {
+ width: 100%;
+}
+
+.input {
+  border-radius: 20px;
+  position: relative;
+  margin: 25px;
+  border: 1px solid #212121;
+  padding: 10px 15px;
 }

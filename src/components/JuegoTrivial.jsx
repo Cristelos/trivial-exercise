@@ -26,7 +26,7 @@ export default function JuegoTrivial(){
     const handleSelect = (answer, question) => {
         if (answer === question.correct_answer) {
           alert("¡Respuesta correcta!");
-          setRespuestasCorrectas(respuestasCorrectas + 1);
+          setRespuestasCorrectas(prevRespuestasCorrectas => prevRespuestasCorrectas + 1);
         } else {
         alert("Respuesta incorrecta. La respuesta correcta es: " + question.correct_answer);
         }
@@ -42,12 +42,15 @@ export default function JuegoTrivial(){
     }, [amountQuestions])
 
     return(
-        <div>
+        <div className="trivial">
             <div className="seleccion">
-            <h2>Indica el número de preguntas que quieras</h2>
-                <input type="number" name="amount" value={amountQuestions} onChange={handleAmoutChange}/>
+            <h1>Trivial</h1>
+            <h3>Indica el número de preguntas que quieras</h3>
+            <div className="input__container">
+                <input className="input" type="number" name="amount" value={amountQuestions} onChange={handleAmoutChange}/>
+            </div>
                 <div className="score">
-                Respuestas correctas: {respuestasCorrectas}
+                    <h3>Respuestas correctas: <span>{respuestasCorrectas}</span></h3>
                 </div>
             </div>
             <div className="preguntas-respuestas">
@@ -61,12 +64,12 @@ export default function JuegoTrivial(){
                     return (
                         
                         <div key={index} className="contenedor-preguntas">
-                            <h3>{question.question}</h3>
+                            <p>{question.question}</p>
                             <ul className="respuestas">
                                 {mixedAnswers && mixedAnswers.map((answer, i) => (
-                                    <li>
+                                    <li key={i}>
                                         {/* <button className={answer === correctAnswer && selectedAnswer!== null ? "correct answer" : selectedAnswer !== correctAnswer && selectedAnswer!== null ? "incorrecta" : "correcta"} key={i} onClick={() => handleSelect(answer, correctAnswer)}> */}
-                                        <button key={i} onClick={() => handleSelect(answer, question)}>
+                                        <button onClick={() => handleSelect(answer, question)} className="respuestas">
                                             {answer}
                                         </button>
                                     </li>
